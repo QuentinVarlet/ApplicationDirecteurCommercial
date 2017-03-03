@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalogue>
+    
+    <produit ref="P01">
+        <designation >souris</designation>
+        <prix>12.5</prix>
+    </produit>
+     
+    <produit ref="P02">
+        <designation >clavier</designation>
+        <prix>20</prix>
+    </produit>
+         
+</catalogue>

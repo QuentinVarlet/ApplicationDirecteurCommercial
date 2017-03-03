@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<infosRDV>
+    <rdv  action="ajout">
+        <numRdv>1245</numRdv>
+        <nomClient>Dubois</nomClient>
+        <adresseClient>12 Rue des Fleurs 14000 Caen</adresseClient>
+        <telClient>0456543237</telClient>
+        <codeZei>CA</codeZei>
+        <numeroContrat>287</numeroContrat>
+        <dateRDV>12/04/2015</dateRDV>
+        <chargeRdv>50</chargeRdv>
+        <plageHoraire>Matin</plageHoraire>
+    </rdv>
+    <rdv action="modif">
+        <numRdv>1230</numRdv>
+        <dateRDV>21/04/2015</dateRDV>
+        <chargeRdv>45</chargeRdv>
+        <plageHoraire>Apres-Midi</plageHoraire>
+    </rdv>
+    <rdv action="supp">
+         <numRdv>1215</numRdv>
+    </rdv>
+</infosRDV>
