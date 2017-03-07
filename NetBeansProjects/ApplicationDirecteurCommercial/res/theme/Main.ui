@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="Main" cloudDestinationProperty="Main" title="Hi World" >
+  <component type="Label" name="Label" cloudDestinationProperty="Label" text="" >
+  </component>
+  <component type="TextField" name="TextField" cloudBoundProperty="text" cloudDestinationProperty="TextField" text="Nom du directeur" columns="45" >
+  </component>
+  <component type="AutoCompleteTextField" name="AutoCompleteTextField" cloudBoundProperty="text" cloudDestinationProperty="AutoCompleteTextField" text="" columns="45" rows="1" >
+  </component>
+  <component type="Button" name="Button" cloudDestinationProperty="Button" text="Button" gap="2" verticalAlignment="2" textPosition="2" >
+  </component>
+</component>
