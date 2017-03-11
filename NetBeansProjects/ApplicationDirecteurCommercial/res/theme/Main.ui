@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <component type="Form" name="Main" cloudDestinationProperty="Main" title="Hi World" >
-  <component type="Label" name="Label" cloudDestinationProperty="Label" text="" >
-  </component>
-  <component type="TextField" name="TextField" cloudBoundProperty="text" cloudDestinationProperty="TextField" text="Nom du directeur" columns="45" >
-  </component>
-  <component type="AutoCompleteTextField" name="AutoCompleteTextField" cloudBoundProperty="text" cloudDestinationProperty="AutoCompleteTextField" text="" columns="45" rows="1" >
-  </component>
-  <component type="Button" name="Button" cloudDestinationProperty="Button" text="Button" gap="2" verticalAlignment="2" textPosition="2" >
+  <component type="Tabs" name="Connexion" cloudDestinationProperty="Tabs" uiid="Tabs" >
+    <custom name="titles" type="java.lang.String" array="true" dimensions="1" >
+      <str>Connexion</str>
+      <str>Donn&#xe9;es</str>
+    </custom>
+    <component type="Container" name="Container" tabTitle="Connexion" cloudDestinationProperty="Container" enabled="true" rtl="false" scrollVisible="true" layout="TableLayout" tableLayoutRows="4" tableLayoutColumns="1" >
+      <component type="TextField" name="TextFieldId" cloudBoundProperty="text" cloudDestinationProperty="TextField" text="" columns="45" >
+      </component>
+      <component type="TextField" name="TextFieldIdMdp" cloudBoundProperty="text" cloudDestinationProperty="TextField" text="" columns="45" >
+      </component>
+      <component type="Button" name="Button" cloudDestinationProperty="Button" text="Connexion" gap="2" verticalAlignment="2" textPosition="2" >
+      </component>
+      <component type="Label" name="Label" cloudDestinationProperty="Label" text="" >
+      </component>
+    </component>
+    <component type="Container" name="Container1" tabTitle="Donn&#xe9;es" cloudDestinationProperty="Container1" >
+    </component>
   </component>
 </component>

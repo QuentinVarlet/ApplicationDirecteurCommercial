@@ -10,8 +10,13 @@ package userclasses;
 import generated.StateMachineBase;
 import com.codename1.ui.*; 
 import com.codename1.ui.events.*;
+import com.codename1.ui.table.Table;
 import com.codename1.ui.util.Resources;
 import com.codename1.xml.Element;
+import java.util.Vector;
+import userclasses.util.modele.ModeleDeTableau;
+import static userclasses.util.parser.ParserArbreXML.getLesElementsFils;
+import static userclasses.util.parser.ParserArbreXML.getValeur;
 import userclasses.util.parser.RequetePourArbreXML;
 
 
@@ -21,8 +26,14 @@ import userclasses.util.parser.RequetePourArbreXML;
  */
 public class StateMachine extends StateMachineBase {
 
-    private RequetePourArbreXML requeteRestExploitation;
-    private Element eltExploitation;
+    private RequetePourArbreXML requeteRestConnexion;
+    private RequetePourArbreXML requeteRestRegion;
+    private Element eltRegion;
+    private Element cx;
+    private Table tableau;
+    private ModeleDeTableau modeleDuTableau; 
+
+
 
     
     public StateMachine(String resFile) {
@@ -36,13 +47,59 @@ public class StateMachine extends StateMachineBase {
     protected void postMain(Form f) {
         super.postMain(f); //To change body of generated methods, choose Tools | Templates.
         
-        requeteRestExploitation = new RequetePourArbreXML();
-        requeteRestExploitation.executer("gc/login/{id}{mdp}");
-        
+        requeteRestConnexion = new RequetePourArbreXML();
+        requeteRestRegion = new RequetePourArbreXML();
+        //requeteRestExploitation.executer("gc/login/{id}{mdp}");
 
-        
+   
     }
     
+    @Override
+  
+    protected void onMain_ButtonAction(Component c, ActionEvent event){
+        super.onMain_ButtonAction(c, event);
+        
+        String id = this.findTextFieldId().getText();
+        String mdp = this.findTextFieldIdMdp().getText();
+        
+        if (!id.equals("") && !mdp.equals("")){
+            
+            requeteRestConnexion.executer("gc/login/"+id+"/"+mdp);
+            cx = requeteRestConnexion.getRacine();
+            
+            if(cx.equals("OK")){
+                
+                requeteRestRegion.executer("gc/resumeregion/tous");
+               this.eltRegion = requeteRestRegion.getRacine();
+
+                Vector<Element>  lesElementsRegion  = getLesElementsFils(eltRegion,"dtoregion");
+                tableau.setVisible(true);
+                //System.out.println(lesElementsParcelles);
+
+                for ( Element eltParcelles: lesElementsRegion){
+
+                    System.out.println(eltRegion);
+
+                 
+                    modeleDuTableau.ajouterRangee(
+
+                   
+                    );
+                }
+             tableau.setModel(modeleDuTableau);
+            }
+            
+        }
+        
+        /*for ( Element eltRegion: lesElementsRegion){
+            Element el = eltRegion; 
+            ModeleDeTableau.ajouterRangee(
+
+            )
+        }*/
+    }
+
+   
     
     
     

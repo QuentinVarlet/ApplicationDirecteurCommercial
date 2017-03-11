@@ -33,10 +33,11 @@ public abstract class StateMachineBase extends UIBuilder {
 
     public Container startApp(Resources res, String resPath, boolean loadTheme) {
         initVars();
-        UIBuilder.registerCustomComponent("AutoCompleteTextField", com.codename1.ui.AutoCompleteTextField.class);
+        UIBuilder.registerCustomComponent("Container", com.codename1.ui.Container.class);
         UIBuilder.registerCustomComponent("Form", com.codename1.ui.Form.class);
         UIBuilder.registerCustomComponent("Button", com.codename1.ui.Button.class);
         UIBuilder.registerCustomComponent("Label", com.codename1.ui.Label.class);
+        UIBuilder.registerCustomComponent("Tabs", com.codename1.ui.Tabs.class);
         UIBuilder.registerCustomComponent("TextField", com.codename1.ui.TextField.class);
         if(loadTheme) {
             if(res == null) {
@@ -72,10 +73,11 @@ public abstract class StateMachineBase extends UIBuilder {
 
     public Container createWidget(Resources res, String resPath, boolean loadTheme) {
         initVars();
-        UIBuilder.registerCustomComponent("AutoCompleteTextField", com.codename1.ui.AutoCompleteTextField.class);
+        UIBuilder.registerCustomComponent("Container", com.codename1.ui.Container.class);
         UIBuilder.registerCustomComponent("Form", com.codename1.ui.Form.class);
         UIBuilder.registerCustomComponent("Button", com.codename1.ui.Button.class);
         UIBuilder.registerCustomComponent("Label", com.codename1.ui.Label.class);
+        UIBuilder.registerCustomComponent("Tabs", com.codename1.ui.Tabs.class);
         UIBuilder.registerCustomComponent("TextField", com.codename1.ui.TextField.class);
         if(loadTheme) {
             if(res == null) {
@@ -114,14 +116,26 @@ public abstract class StateMachineBase extends UIBuilder {
         this(res, null, loadTheme);
     }
 
-    public com.codename1.ui.AutoCompleteTextField findAutoCompleteTextField(Component root) {
-        return (com.codename1.ui.AutoCompleteTextField)findByName("AutoCompleteTextField", root);
+    public com.codename1.ui.Container findContainer(Component root) {
+        return (com.codename1.ui.Container)findByName("Container", root);
     }
 
-    public com.codename1.ui.AutoCompleteTextField findAutoCompleteTextField() {
-        com.codename1.ui.AutoCompleteTextField cmp = (com.codename1.ui.AutoCompleteTextField)findByName("AutoCompleteTextField", Display.getInstance().getCurrent());
+    public com.codename1.ui.Container findContainer() {
+        com.codename1.ui.Container cmp = (com.codename1.ui.Container)findByName("Container", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.AutoCompleteTextField)findByName("AutoCompleteTextField", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.Container)findByName("Container", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.TextField findTextFieldIdMdp(Component root) {
+        return (com.codename1.ui.TextField)findByName("TextFieldIdMdp", root);
+    }
+
+    public com.codename1.ui.TextField findTextFieldIdMdp() {
+        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("TextFieldIdMdp", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.TextField)findByName("TextFieldIdMdp", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -150,14 +164,38 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.TextField findTextField(Component root) {
-        return (com.codename1.ui.TextField)findByName("TextField", root);
+    public com.codename1.ui.Container findContainer1(Component root) {
+        return (com.codename1.ui.Container)findByName("Container1", root);
     }
 
-    public com.codename1.ui.TextField findTextField() {
-        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("TextField", Display.getInstance().getCurrent());
+    public com.codename1.ui.Container findContainer1() {
+        com.codename1.ui.Container cmp = (com.codename1.ui.Container)findByName("Container1", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.TextField)findByName("TextField", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.Container)findByName("Container1", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.TextField findTextFieldId(Component root) {
+        return (com.codename1.ui.TextField)findByName("TextFieldId", root);
+    }
+
+    public com.codename1.ui.TextField findTextFieldId() {
+        com.codename1.ui.TextField cmp = (com.codename1.ui.TextField)findByName("TextFieldId", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.TextField)findByName("TextFieldId", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.Tabs findConnexion(Component root) {
+        return (com.codename1.ui.Tabs)findByName("Connexion", root);
+    }
+
+    public com.codename1.ui.Tabs findConnexion() {
+        com.codename1.ui.Tabs cmp = (com.codename1.ui.Tabs)findByName("Connexion", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Tabs)findByName("Connexion", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -288,12 +326,12 @@ public abstract class StateMachineBase extends UIBuilder {
         }
         if(rootContainerName == null) return;
         if(rootContainerName.equals("Main")) {
-            if("TextField".equals(c.getName())) {
-                onMain_TextFieldAction(c, event);
+            if("TextFieldId".equals(c.getName())) {
+                onMain_TextFieldIdAction(c, event);
                 return;
             }
-            if("AutoCompleteTextField".equals(c.getName())) {
-                onMain_AutoCompleteTextFieldAction(c, event);
+            if("TextFieldIdMdp".equals(c.getName())) {
+                onMain_TextFieldIdMdpAction(c, event);
                 return;
             }
             if("Button".equals(c.getName())) {
@@ -303,10 +341,10 @@ public abstract class StateMachineBase extends UIBuilder {
         }
     }
 
-      protected void onMain_TextFieldAction(Component c, ActionEvent event) {
+      protected void onMain_TextFieldIdAction(Component c, ActionEvent event) {
       }
 
-      protected void onMain_AutoCompleteTextFieldAction(Component c, ActionEvent event) {
+      protected void onMain_TextFieldIdMdpAction(Component c, ActionEvent event) {
       }
 
       protected void onMain_ButtonAction(Component c, ActionEvent event) {
