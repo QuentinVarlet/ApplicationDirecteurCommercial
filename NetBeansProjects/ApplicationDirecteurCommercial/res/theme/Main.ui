@@ -17,6 +17,8 @@
       </component>
     </component>
     <component type="Container" name="Container1" tabTitle="Donn&#xe9;es" cloudDestinationProperty="Container1" >
+      <component type="Table" name="Table" cloudDestinationProperty="Table" >
+      </component>
     </component>
   </component>
 </component>

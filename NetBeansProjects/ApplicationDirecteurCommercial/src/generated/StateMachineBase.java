@@ -34,6 +34,7 @@ public abstract class StateMachineBase extends UIBuilder {
     public Container startApp(Resources res, String resPath, boolean loadTheme) {
         initVars();
         UIBuilder.registerCustomComponent("Container", com.codename1.ui.Container.class);
+        UIBuilder.registerCustomComponent("Table", com.codename1.ui.table.Table.class);
         UIBuilder.registerCustomComponent("Form", com.codename1.ui.Form.class);
         UIBuilder.registerCustomComponent("Button", com.codename1.ui.Button.class);
         UIBuilder.registerCustomComponent("Label", com.codename1.ui.Label.class);
@@ -74,6 +75,7 @@ public abstract class StateMachineBase extends UIBuilder {
     public Container createWidget(Resources res, String resPath, boolean loadTheme) {
         initVars();
         UIBuilder.registerCustomComponent("Container", com.codename1.ui.Container.class);
+        UIBuilder.registerCustomComponent("Table", com.codename1.ui.table.Table.class);
         UIBuilder.registerCustomComponent("Form", com.codename1.ui.Form.class);
         UIBuilder.registerCustomComponent("Button", com.codename1.ui.Button.class);
         UIBuilder.registerCustomComponent("Label", com.codename1.ui.Label.class);
@@ -124,6 +126,18 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.Container cmp = (com.codename1.ui.Container)findByName("Container", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.Container)findByName("Container", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.table.Table findTable(Component root) {
+        return (com.codename1.ui.table.Table)findByName("Table", root);
+    }
+
+    public com.codename1.ui.table.Table findTable() {
+        com.codename1.ui.table.Table cmp = (com.codename1.ui.table.Table)findByName("Table", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.table.Table)findByName("Table", aboutToShowThisContainer);
         }
         return cmp;
     }
